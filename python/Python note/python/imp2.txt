@@ -1,0 +1,11 @@
+Constructor:
+
+1. Constructor is a special method in python
+2. The name of the constructor should be __init__
+3. Constructor will be executed automatically when ever we are creating an object
+4. The main objective of constructor in python is to declare object related variables and perform initialization
+5. Constructor will be executed only once per object
+6. Constructor should take atleast one argument that is self
+7. Constructor is optional and if we are not providing python will provide default constructor
+8. Class can have more than 1 constructor methods but it will take last/latest constructor will be considered.
+9. we can call constructor like other method, but we have to pass values if paraters are defined in constructor.

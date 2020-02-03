@@ -1,0 +1,95 @@
+Variable Overriding:
+class A:
+	name='Gtec'
+class B(A):
+	name='RTNagar'
+t1=B()
+print(t1.name)
+
+Method Overriding:
+same name with different functioinality
+class A:
+	def m1(self):
+		print('class A m1')
+class B(A):
+	def m1(self):
+		print('class B m1')
+t1=B()
+t1.m1()
+
+Duck Typing:
+
+class A:
+	def bird(self):
+		print('swim')
+class B:
+	def bird(self):
+		print('walk')
+class C:
+	def bird(self):
+		print('quack')
+
+class duck:
+	def code(self,act):
+		act.bird()
+
+act=B()
+
+d1=duck()
+d1.code(act)
+
+Decorators:
+from functools import wraps
+
+def log(func):
+	@wraps(func)--using wraps to fetch actual function name otherwise it will fetch below wrapper function name 
+	def wrapper(n1,n2):
+		print('calling '+func.__name__)
+		return func(n1,n2)
+	return wrapper
+
+@log
+def add(n1,n2):
+	print('calling add')
+	print(n1+n2)
+@log
+def sub(n1,n2):
+	print('calling sub')
+	print(n1-n2)
+@log
+def mul(n1,n2):
+	print('calling mul')
+	print(n1*n2)
+@log
+def div(n1,n2):
+	print('calling div')
+	print(n1/n2)
+
+
+
+
+Decorator in Class:
+from functools import wraps
+
+def logged(func):
+	@wraps(func)
+	def wrapper(*args,**kwargs):
+		print("logged",func.__name__,args[1:],kwargs)
+		return func(*args,**kwargs)
+	return wrapper
+
+def logmethod(cls):
+	for key,value in list(vars(cls).items()):
+		if callable(value):
+			setattr(cls,key,logged(value))
+	return cls
+
+@logmethod
+class Ex:
+	g=1000
+	def spam(self,a,k="v1"):
+		print("spam")
+	def yellow(self,a):
+		print("yellow")
+o=Ex()
+o.spam(100)

@@ -1,0 +1,59 @@
+Instance method: atleast one instance variable, no decorator
+Class method: static variables, but not instance variable, @classmethod
+Static method: general utility method @staticmethod - optional
+
+class Test:
+	def m1(cls):
+		print('some method')
+t=Test.m1(10)  --static method
+t.m1()  -- instance method
+
+Inner Class: class inside another class
+
+
+class Outer:
+	def __init__(self):
+		print('Outer class object creation.')
+	class Inner:
+		def __init__(self):
+			print('Inner cls obj creation.')
+		def m1(self):
+			print('Inner class method')
+
+o=Outer()
+i=o.Inner()
+i.m1()
+Outer().Inner().m1()
+
+Nested Method:
+
+class Test:
+	def m1(self):
+		a,b=10,20
+		print('the sum:',a+b)
+		print('the product:',a*b)
+		print('the division:',a/b)
+		print('the diff:',a-b)
+		a,b=100,200
+		print('the sum:',a+b)
+		print('the product:',a*b)
+		print('the division:',a/b)
+		print('the diff:',a-b)
+		a,b=1000,2000
+		print('the sum:',a+b)
+		print('the product:',a*b)
+		print('the division:',a/b)
+		print('the diff:',a-b)
+t=Test()
+t.m1()
+
+class Test:
+	def m1():
+		def calc(a,b):
+			print('the sum:',a+b)
+			print('the product:',a*b)
+			print('the division:',a/b)
+			print('the diff:',a-b)
+	calc(10,20)
+	calc(100,200)
+	calc(1000,2000)

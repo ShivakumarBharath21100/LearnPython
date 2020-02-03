@@ -1,0 +1,30 @@
+Types of Methods:
+1. Instance Methods
+2. Static Methods
+3. Class Methods
+
+1. Instance Methods:
+Object related Methods - Related to Object
+inside method, instance variable and first argu should be self
+within class self.method, outside class using obj ref
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+29

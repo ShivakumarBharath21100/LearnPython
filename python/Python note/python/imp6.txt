@@ -1,0 +1,26 @@
+--first parameter should be self only in constructor
+
+How to delete static variables:
+del classname.variablename--any place
+but inside classmethod
+del classname.variablename
+del cls.variablename
+
+class customer:
+	'''ldjfalsdjfa'''
+	bankname='ambbank'
+	def __init__(self,name,balance=0.0):--to declare default variables, if we are not passing values to it, it will take default value.
+		self.name = name
+		self.balance = balance
+
+We can access static variables either by object reference or by classname.
+But we cannot modify and delete static variables by using object reference.
+Compulsory we should use classname only.
+
+
+Local Variables:
+to meet temporary requirement we can create
+
+default variable position
+doc string
+sys.exit()

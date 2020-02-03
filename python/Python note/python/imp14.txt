@@ -1,0 +1,24 @@
+Function Annotations:
+def f(a:"int",b:"int")->"int":
+	return a+b
+f(2,3)
+
+Iter:
+l=[1,2,3,4,5]
+seq=iter(l)
+next(seq)
+
+
+Generators:
+def f1(a=0):
+	while True:
+		a=a+1
+		yield a
+
+go=f1()
+next(go)
+
+
+ge=(i for i in l if i%2==0)
+
+next(ge)

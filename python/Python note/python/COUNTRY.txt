@@ -1,0 +1,32 @@
+<country>
+<KA>
+	<dist name="Bangalore">
+		<population>1500000</population>
+		<ocupation>IT</ocupation>
+	</dist>
+	<dist name="Mandya">
+		<population>1300000</population>
+		<ocupation>Farming</ocupation>
+	</dist>
+	<dist name="Mangalore">
+		<population>1200000</population>
+		<ocupation>Pharma</ocupation>
+	</dist>
+</KA>
+
+<AP>
+	<dist name="Hyderabad">
+		<population>1200000</population>
+		<ocupation>IT</ocupation>
+	</dist>
+	<dist name="Vizag">
+		<population>1100000</population>
+		<ocupation>Farming</ocupation>
+	</dist>
+	<dist name="Anantapur">
+		<population>900000</population>
+		<ocupation>Pharma</ocupation>
+	</dist>
+</KA>
+
+</country>

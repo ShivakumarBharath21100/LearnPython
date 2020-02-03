@@ -1,0 +1,102 @@
+Static Variables (Class Level Variables):
+if all objects one variable is required then we can go for static variable. 
+How can we access static variables?:
+by using class name or reference variable
+
+where can we declare static variable?:
+we can declare directly under class.
+
+static variable: only one copy will be created at class level
+instance variable: for every object a seperate copy will be created
+
+class Test:
+	a=10
+	def __init__(self):
+		self.b=20
+
+t1=Test()
+t1.b=777
+Test.a=888
+t1.a=1000
+t2=Test()
+print(t1.a,t1.b)
+print(t2.a,t2.b)
+888,777
+888,20
+
+class Test:
+	a=10
+	def __init__(self):
+		self.b=20
+
+t1=Test()
+t1.b=777
+t1.a=888--here it will check whether instant variable is there if it is not there then it will create instant variable and assign the 888 to it a, we can access static variable value by using reference variable but if we try to change the value it will create instant variable if it is not there, so we have to use class name only to change the value of static variable.
+t2=Test()
+print(t1.a,t1.b)
+print(t2.a,t2.b)
+888,777
+10,20
+
+is it possible to have static and instance variables name as same?
+yes
+
+by obj reference if we access: instance
+by class name if we access: static
+
+Various places to declare static variables:
+1. Inside class directly
+2. Inside constructor by using class name
+3. Inside instance method by using class name
+4. Inside class method by using cls variable or class name
+5. Inside static method by using class name
+6. from outside of class also by using class name
+
+
+
+class Test:
+	def __init__(self):
+		pass
+	def m1(self):
+		instance method
+	@classmethod
+	def m2(cls):--cls refering to current class
+		class method
+
+	@staticmethod
+	def m3():--this will not take self or cls keyword, but can take any other vaiables like me(a,b)
+		static method
+
+class method and static methods are not same where related object, without object also we can call these methods.
+
+
+class Test:
+	a = 10
+	def __init__(self):
+		Test.b = 20
+	def m1(self):
+		Test.c = 30
+	@classmethod
+	def m2(cls):
+		cls.d = 40
+		Test.e = 50
+	@staticmethod
+	def m3():
+		Test.f = 60
+print(Test.__dict__)--here only one a static variable will be created.
+t = Test()--here 2 a,b static variables will be created
+t.m1()--here 3 a,b,c static variables will be created
+t.m2() or Test.m2()-- here 5 a,b,c,d,e static variables will be created
+Test.m3()--here 6 a,b,c,d,e,f static variables will be created
+Test.g = 70--here g static variable will be created
+
+IN REAL TIME WE HAVE TO CREATE STATIC VARIABLES IN CLASS LEVEL ONLY
+
+
+class Test:
+	a = 777
+	def __init__(self):
+		self.a = 888
+t = Test()
+print(t.a)--first priority is instant variable, so it will check instant variable is there, here it is there so it will fetch 888. if it is not there then it will fetch static variable.
+print(Test.a)--here static variable only 

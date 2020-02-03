@@ -1,0 +1,67 @@
+ How to access the static variable:
+1. Inside constructor: either by self or by class name
+2. Inside instance method: either by self or by class name
+3. Inside class method: either by cls or by class name
+4. Inside static method: by class name
+5. outside of class: either by object reference or by classname
+
+
+class Test:
+	a = 10
+	def __init__(self):
+		print(self.a)
+		print(Test.a)
+	def m1(self):
+		print(self.a)
+		prinnt(Test.a)
+	@classmethod
+	def m2(cls):
+		print(cls.a)
+		print(Test.a)
+	@staticmethod
+	def m3():
+		print(Test.a)
+
+print(Test.a)
+t = Test()
+print(t.a)
+t.m1()
+t.m2()
+t.m3()
+
+
+where we can modify the value of static variable:
+1. by using class name
+2. inside classmethod by using cls variable also
+
+class Test:
+	a = 10
+	def __init__(self):
+		Test.a = 888
+		self.a = 777
+		a = 999 -- locall variable
+		print(a)--here high priority is local variable only, so out put is 999
+		print(self.a)
+		print(Test.a)
+		
+
+class Test:
+	a = 10
+	def __init__(self):
+		Test.a = 111
+	def m1(self):
+		Test.a = 222
+	@classmethod
+	def m2(cls):
+		cls.a = 333
+	@staticmethod
+	def m3():
+		Test.a = 444
+t=Test()--a is 111
+t.m1()--a is 222
+t.m2()--a is 333
+t.m3()--a is 444
+t.a = 999
+print(Test.a)--a is 444
+prinnt(t.a)--a is 999
+

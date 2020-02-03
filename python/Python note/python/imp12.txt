@@ -1,0 +1,30 @@
+Exception Handling:
+
+
+import sys
+
+class Numericvalid(Exception):
+  def __str__(self):
+	return 'please enter values greater than 100'
+
+try:
+  n1=input('enter a n1 number :')
+  n2=input('enter a n2 number :')
+  if int(n1) < 100 or int(n2) < 100:
+     raise Numericvalid(n1,n2)
+  print(int(n1)+int(n2))
+except (ValueError,TypeError):
+  print('please enter n1 and n2 as numeric val')
+except Numericvalid as e:
+  print(e,e.args)
+except:
+  print('please enter numeric inputs only')
+
+finally:
+  print('end of the program')
+
+
+AssertionError:
+a=int(input('enter value: '))
+assert a>100,'invalid no'
+print(a)

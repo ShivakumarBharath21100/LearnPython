@@ -1,0 +1,68 @@
+Encapsulation:
+class Person:
+	def __init__(self,name,mobile_no):
+		self.name=name
+		self.mobile_no=mobile_no
+	@property
+	def name(self):
+		return self._name
+	@name.setter
+	def name(self,name):
+		if not isinstance(name,str):
+			raise TypeError('invalid no')
+		self._name=name
+obj=Person('gtec',12345)
+
+Descriptor Class:
+class Interger(object):
+	def __init__(self,name):
+		self.name=name
+	def __get__(self,instance,cls):
+		return instance.__dict__[self.name]
+	def __set__(self,instance,val):
+		if not isinstance(val,int):
+			raise TypeError('Type Error')
+		instance.__dict__[self.name]=val
+
+class Person:
+	mobile_no=Interger('mobile_no')
+	age=Interger('age')
+	def __init__(self,name,mobile_no,age):
+		self.name=name
+		self.mobile_no=mobile_no
+		self.age=age
+	@property
+	def name(self):
+		return self._name
+	@name.setter
+	def name(self,name):
+		if not isinstance(name,str):
+			raise TypeError('invalid no')
+		self._name=name
+	
+obj=CC(100,200)
+print(obj.x,obj.y)
+
+Example for no of arguments:
+
+class Person:
+	def __init__(self,name,mobile_no):
+		self.name=name
+		self.mobile_no=mobile_no
+	@property
+	def name(self):
+		return self._name
+	@name.setter
+	def name(self,name):
+		if not isinstance(name,str):
+			raise TypeError('invalid no')
+		self._name=name
+	def __getattr__(self,name):
+		return "invalid value = {}".format(name)
+	def __setattr__(self,name,value):
+		if name not in {'name','mobile_no'}:
+			raise AttributeError('Invalid attribute')
+		self.__dict__[name]=value
+obj=Person('gtec',92342)
+obj.email='test@gmail.com'
+obj=Person('gtec',12345)

@@ -1,0 +1,68 @@
+Method:
+1. method name can be anything
+2. Methods should be called explicitly
+3. Per object, method can be called any number of times
+4. business logic
+
+Constructor:
+1. name always __init__()
+2. will be executed automatically, we are not required to call
+3. only once it will call
+4. to declare and initialize instance variables
+
+
+
+if constructor name is given some other name then we have to call constructor method explicitly every object creation.
+
+we can create class without constructor, but not recommended as every time object creation we have to create instance variables.
+
+
+Types of Variables:
+1. Instance Variables (Object Level Variables)
+2. Static Variables (Class Level Variables)
+3. Local Variables (Method Level Variables)
+
+
+1. Instance Variables/Object Level Variables:
+If the value of a variable is varied from object to object, it is seperate copy of object.
+where we have to declare Instance Variables?
+there are 3 places we can create
+1. Inside constructor by using self variable
+2. Inside instance method by using self variable
+3. Outside of the class by using object reference variable
+
+class Employee:
+	def __init__(self):
+		self.eno = 100
+		self.ename = 'ambi'
+		self.esal = 999999
+
+e = Employee()
+print(e.__dict__)--here dict default property
+print(e.eno)
+
+
+class Test:
+	def __init__(self):
+		self.a = 10--instance variable
+	def m1(self):
+		self.b = 20--instance variable, but this will be create when this method is called
+
+t = Test()
+t.m1()
+t.c = 30--instance object
+print(t.__dict__)
+
+How to delete Instance Variables in different:
+--deleting instance variables is very rare
+class Test:
+	def __init__(self):
+		self.a = 10
+		self.b = 20
+		self.c = 30
+	def m1(self):
+		del self.b
+t = Test()
+t.m1()
+del t.a
+print(t.__dict__)--here we will get only c variable

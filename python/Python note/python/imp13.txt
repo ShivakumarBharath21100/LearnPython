@@ -1,0 +1,117 @@
+File Handling:
+
+fp=open(r'c:\users\achuakul\test4.py','r')
+print(fp.read())
+fp.close()
+
+with open(r'c:\users\achuakul\b.txt','r') as fp:
+	print(fp.read())
+print(fp.read())
+'r'--read input file, default
+'w'--create output file,'w' write
+'a'--append
+'b'--binary
+'rb'--read binary
+
+data=fp.read()--read entire string into a single string
+data=fp.read(n)--read only n characters from file
+data=fp.readline()--read next line into a string
+data=fp.readlines()--read entire file into list of lines strings
+
+output.write(aString)--write a string of characters into file
+output.writelines(aList)--write all line strings in a list into file
+
+fp.flush()
+
+fp.seek(0)
+
+
+eval:
+
+
+fp=open(r'c:\users\achuakul\b.txt','w')
+fp.write('[1,2,3]')
+fp.close()
+fp=open(r'c:\users\achuakul\b.txt','r')
+data=eval(fp.read())
+print(type(data),data)
+fp.close()
+
+pickle:
+D={'a':1,'b':2}
+F=open('datafile.pkl','wb')
+import pickle
+pickle.dump(D,F)
+F.close()
+
+F=open('datafile.pkl','rb')
+E=pickle.load(F)
+E
+{'a':1,'b':2}
+
+Struct:
+f=open(data.bin','wb')
+import struct
+data=struct.pack('>i4sh',7,b'spam',8)-->means big invent format and < is small invent format
+data
+b'\x00\x00\x00\x0spam\x00\x08'
+
+pack: converting normal data into binary data
+unpack: converting binary
+
+f=open('data.bin','rb')
+data=f.read()
+data
+b'\x00\x00\x00\x0spam\x00\x08'
+values=struct.unpack('>i4sh',data)
+values
+(7,b'spam',8)
+
+
+
+
+REST APIs:
+import json
+fp=open(r'c:\users\achuakul\sample.txt')
+data = fp.read()
+print(type(data))
+
+fs_dict=json.load(data)
+
+print(type(fs_dict))
+print(len(fs_dict))
+print(fs_dict[0])
+close()
+
+XML DATA READ:(semi Structured data)
+from bs4 import BeautifulSoup
+fp=open('countr_d.xml')
+
+xml_data=fp.read()
+
+soup=BeaurifulSoup(xml_data,'lxml')
+for rec in soup.find_all("dist"):
+	print(rec["name"],rec.population.string,rec.occupation.string)
+
+
+
+PDF Files:
+# importing required modules
+import PyPDF2
+#creatng a pdf file object
+pdfFileObj = open(r'c:\users\akulachu\log.pdf','rb')
+
+#creating a pdf reader object
+pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+
+#printing number of pages in pdf file
+print(pdfReader.numPages)
+
+#creating a page object
+pageObj=pdfReader.getPage(0)
+
+#extracting text from page
+print(pageObj.extractText())
+
+#closing the pdf file object
+pdfFileObj.close()
